@@ -31,7 +31,10 @@ function weightFunc(d, dmax, degree) {
 function normalize(referenceArr) {
   var cutoff = Math.ceil(0.1 * referenceArr.length);
   var trimmed_arr = (0, _lodash2.default)(referenceArr).slice(cutoff, referenceArr.length - cutoff);
-  var sd = trimmed_arr.length > 0 ? (0, _mathjs.std)(trimmed_arr) : (0, _mathjs.std)(referenceArr);
+  if (trimmed_arr.length === 0) return function (outputArr) {
+    return outputArr;
+  };
+  var sd = (0, _mathjs.std)(trimmed_arr);
   return function (outputArr) {
     return outputArr.map(function (val) {
       return val / sd;

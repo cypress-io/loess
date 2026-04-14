@@ -9,7 +9,8 @@ export function weightFunc (d, dmax, degree) {
 export function normalize (referenceArr) {
   const cutoff = Math.ceil(0.1 * referenceArr.length)
   const trimmed_arr = sort(referenceArr).slice(cutoff, referenceArr.length - cutoff)
-  const sd = trimmed_arr.length > 0 ? std(trimmed_arr) : std(referenceArr)
+  if (trimmed_arr.length === 0) return function (outputArr) { return outputArr }
+  const sd = std(trimmed_arr)
   return function (outputArr) {
     return outputArr.map(val => val / sd)
   }
