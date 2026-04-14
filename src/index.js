@@ -58,7 +58,7 @@ export default class Loess {
       const halfwidth = weights.map((weight, idx) => {
         const V1 = math.sum(weight)
         const V2 = math.multiply(weight, weight)
-        const intervalEstimate = Math.sqrt(math.multiply(math.square(residuals[idx]), weight) / (V1 - V2 / V1))
+        const intervalEstimate = Math.sqrt(math.multiply(math.map(residuals[idx], math.square), weight) / (V1 - V2 / V1))
         return intervalEstimate * z
       })
       Object.assign(output, {halfwidth})

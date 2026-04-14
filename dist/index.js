@@ -104,7 +104,7 @@ var Loess = function () {
         var halfwidth = weights.map(function (weight, idx) {
           var V1 = math.sum(weight);
           var V2 = math.multiply(weight, weight);
-          var intervalEstimate = Math.sqrt(math.multiply(math.square(residuals[idx]), weight) / (V1 - V2 / V1));
+          var intervalEstimate = Math.sqrt(math.multiply(math.map(residuals[idx], math.square), weight) / (V1 - V2 / V1));
           return intervalEstimate * z;
         });
         Object.assign(output, { halfwidth: halfwidth });
