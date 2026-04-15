@@ -35,6 +35,9 @@ export interface LoessGridResult {
 
 export default class Loess {
   constructor(data: LoessData, options?: LoessOptions);
+
+  readonly transposedX: number[][];
+
   predict(data?: LoessPredictData): LoessPredictResult;
   grid(cuts: number[]): LoessGridResult;
 }
