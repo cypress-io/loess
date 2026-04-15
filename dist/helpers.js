@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -12,13 +12,13 @@ exports.weightMatrix = weightMatrix;
 exports.polynomialExpansion = polynomialExpansion;
 exports.weightedLeastSquare = weightedLeastSquare;
 
-var _mathjs = require('mathjs');
+var _mathjs = require("mathjs");
 
-var _lodash = require('lodash.sortby');
+var _lodash = require("lodash.sortby");
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _lodash3 = require('lodash.zip');
+var _lodash3 = require("lodash.zip");
 
 var _lodash4 = _interopRequireDefault(_lodash3);
 
@@ -31,7 +31,7 @@ function weightFunc(d, dmax, degree) {
 function normalize(referenceArr) {
   var cutoff = Math.ceil(0.1 * referenceArr.length);
   var trimmed_arr = (0, _lodash2.default)(referenceArr).slice(cutoff, referenceArr.length - cutoff);
-  var sd = (0, _mathjs.std)(trimmed_arr);
+  var sd = trimmed_arr.length === 0 ? 0 : (0, _mathjs.std)(trimmed_arr);
   return function (outputArr) {
     return outputArr.map(function (val) {
       return val / sd;
