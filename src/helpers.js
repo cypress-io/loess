@@ -22,7 +22,7 @@ export function normalize(referenceArr) {
     cutoff,
     referenceArr.length - cutoff,
   );
-  const sd = trimmed_arr.length === 0 ? NaN : std(trimmed_arr);
+  const sd = trimmed_arr.length === 0 ? 0 : std(trimmed_arr);
   return function (outputArr) {
     return outputArr.map((val) => val / sd);
   };
